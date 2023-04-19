@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-tgnnapp-neo4j
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: "https://neo4j.github.io/helm-charts/"
+    chart: "neo4j"
+    targetRevision: 5.5.0
+    helm:
+      valueFiles:
+        - "$values/app-constructs/tgnnapp/neo4j/values.yaml"
+  - repoURL: git@github.com:fotis-sofoulis/tgnn_infrastructure.git
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: tgnnapp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
