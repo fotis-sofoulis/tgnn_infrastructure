@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: "https://neo4j.github.io/helm-charts/"
-    chart: "neo4j/neo4j"
-    targetRevision: 5.5.0
+  - repoURL: "https://charts.bitnami.com/bitnami"
+    chart: "bitnami/spark"
+    targetRevision: 3.3.2
     helm:
       valueFiles:
-        - "$values/app-constructs/tgnnapp/neo4j/values.yaml"
+        - "$values/app-constructs/tgnnapp/spark/values.yaml"
   - repoURL: git@github.com:fotis-sofoulis/tgnn_infrastructure.git
     targetRevision: HEAD
     ref: values
