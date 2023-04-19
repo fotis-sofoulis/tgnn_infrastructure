@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-longhorn
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: "https://charts.longhorn.io"
+    chart: "longhorn"
+    targetRevision: 1.4.1
+    helm:
+      valueFiles:
+        - "$values/app-constructs/longhorn/values.yaml"
+  - repoURL: git@github.com:fotis-sofoulis/tgnn_infrastructure.git
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: longhorn-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

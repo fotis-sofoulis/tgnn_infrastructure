@@ -1,0 +1,6 @@
+defaultSettings:
+  defaultReplicaCount: 1
+
+ingress:
+  enabled: true
+  host: longhorn.tgnnapp.local
