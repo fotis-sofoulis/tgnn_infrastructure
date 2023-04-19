@@ -52,5 +52,6 @@ From argo ui, go to `Applications` and click on `NEW APP` button. Then, click on
 ```
 argocd.tgnnapp.local (already mentioned above)
 longhorn.tgnnapp.local
+spark.tgnnapp.local
 ... more to come ...
 ```

@@ -1,2 +1,6 @@
 worker:
   replicaCount: 2
+
+ingress:
+  enabled: true
+  hostname: spark.tgnnapp.local
