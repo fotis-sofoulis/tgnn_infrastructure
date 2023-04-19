@@ -1,5 +1,9 @@
 # Setting up the infrastructure
 
+## Prerequisites
+
+- [ ] A kubernetes cluster with at least 3 worker nodes and version 1.26 or higher
+
 ## Install Argo
 
 ### Install argo cli
