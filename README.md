@@ -4,6 +4,39 @@
 
 - [ ] A kubernetes cluster with at least 3 worker nodes and version 1.26 or higher
 
+## Install K3S
+
+Check master and worker IPs are either static or binded via your network's DNS, as they will be used afterwards.
+
+### Master node script
+
+```bash
+curl -sfL https://get.k3s.io/ | sh -s - --token {enter_token}
+```
+
+### Worker node script
+
+```bash
+curl -sfL https://get.k3s.io/ | INSTALL_K3S_EXEC="agent --server https://master-node-ip:6443/ --token {enter_token} --node-ip worker-node-ip" sh -s -
+```
+
+### Kubernetes roles
+
+To change a node's role to worker(similarly to master):
+
+```bash
+kubectl label node {node-name} node-role.kubernetes.io/worker=worker
+```
+
+## Install Helm
+
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+
+
 ## Install Argo
 
 ### Install argo cli
