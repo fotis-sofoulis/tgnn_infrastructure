@@ -36,6 +36,19 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
+## Longhorn prerequisites
+
+### Ensure open-iscsi is installed
+
+```bash
+sudo apt update && sudo apt install open-iscsi
+```
+
+### Ensure multipath is black-listed from longhorn devices
+
+Usually, longhorn devices are `/dev/sd*` and `/dev/vd*`. If you have multipath installed, you will have to blacklist it from those devices. To do that, edit `/etc/multipath.conf` and add the following lines:
+
+[https://longhorn.io/kb/troubleshooting-volume-with-multipath/](https://longhorn.io/kb/troubleshooting-volume-with-multipath/)
 
 ## Install Argo
 
