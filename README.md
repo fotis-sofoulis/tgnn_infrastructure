@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [ ] A kubernetes cluster with at least 3 worker nodes and version 1.26 or higher
+- [ ] A K3S kubernetes cluster with at least 3 worker nodes and version 1.26 or higher
 
 ## Install K3S
 
@@ -65,6 +65,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 ```bash
 kubectl apply -n argocd -f app-constructs/argocd/ingress.yaml
+kubectl apply -n argocd -f app-constructs/argocd/ingress-route.yaml
 kubectl apply -n argocd -f app-constructs/argocd/argocd-cmd-params-patch.yaml
 kubectl rollout restart deployment -n argocd argocd-server
 ```
