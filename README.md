@@ -47,13 +47,13 @@ sudo apt update && sudo apt install open-iscsi
 ### Ensure multipath is black-listed from longhorn devices
 
 Usually, longhorn devices are `/dev/sd*`. If you have multipath installed, you will have to blacklist it from those devices.
-It is best to skip this stem at installation time and blacklist multipath later on in order to ensure that longhorn devices are set in `/dev/sd*`. Read more about it here:
+It is best to skip this step at installation time and blacklist multipath later on in order to ensure that longhorn devices are set in `/dev/sd*`. Read more about it here:
 
 [https://longhorn.io/kb/troubleshooting-volume-with-multipath/](https://longhorn.io/kb/troubleshooting-volume-with-multipath/)
 
 ## Install Argo
 
-### Install argo cli
+### Install argocd in the cluster
 
 ```bash
 kubectl create namespace argocd
