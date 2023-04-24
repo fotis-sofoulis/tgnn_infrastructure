@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
   - repoURL: "https://neo4j.github.io/helm-charts/"
-    chart: "neo4j-helm-charts/neo4j"
+    chart: "neo4j"
     targetRevision: 5.5.0
     helm:
       valueFiles:

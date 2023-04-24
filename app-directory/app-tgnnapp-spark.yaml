@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
   - repoURL: "https://charts.bitnami.com/bitnami"
-    chart: "bitnami/spark"
+    chart: "spark"
     targetRevision: 6.4.4
     helm:
       valueFiles:
