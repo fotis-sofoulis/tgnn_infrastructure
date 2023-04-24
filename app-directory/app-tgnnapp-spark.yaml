@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-tgnnapp-neo4j
+  name: app-tgnnapp-spark
   namespace: argocd
 spec:
   project: default
