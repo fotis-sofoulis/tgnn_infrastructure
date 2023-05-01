@@ -107,3 +107,23 @@ longhorn.tgnnapp.local
 spark.tgnnapp.local
 ... more to come ...
 ```
+
+## Run a Spark Job
+
+At first create a new pod in tgnnapp namespace named `spark-client`. The image should be the same as the one used in the spark helm chart. After its creation we are connected into the pod in bash mode.
+
+```bash
+kubectl run --namespace tgnnapp spark-client --rm --tty -i --restart='Never' --image docker.io/bitnami/spark:3.3.2-debian-11-r13 -- /bin/bash
+```
+
+To submit a spark job we need to know a few things:
+1. The name of the spark-master node's service, which in our case is always set to `app-tgnnapp-spark-master-svc`
+2. The IP of the newly created `spark-client` pod, which can be extracted running `hostname -I`
+
+```bash
+spark-submit --master spark://app-tgnnapp-spark-master-svc:7077 \
+    --conf spark.driver.host=$(hostname -I) \
+    --deploy-mode client \
+    --class org.apache.spark.examples.SparkPi \
+    examples/src/main/python/pi.py 5
+```
