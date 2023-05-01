@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-tgnnapp-jupyterhub
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: "https://jupyterhub.github.io/helm-chart/"
+    chart: "jupyterhub"
+    targetRevision: 3.0.0-0.dev.git.6143.h246f1f0c
+    helm:
+      valueFiles:
+        - "$values/app-constructs/tgnnapp/jupyterhub/values.yaml"
+  - repoURL: git@github.com:fotis-sofoulis/tgnn_infrastructure.git
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: tgnnapp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
