@@ -5,3 +5,8 @@ ingress:
 
 global:
   safeToShowValues: true
+
+singleuser:
+  image:
+    name: jupyter/pyspark-notebook
+    tag: "spark-3.4.0"
