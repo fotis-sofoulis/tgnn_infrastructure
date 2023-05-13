@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: git@github.com:fotis-sofoulis/tgnn_infrastructure.git
     targetRevision: HEAD
-    path: app-constructs/neo4j/setup
+    path: app-constructs/tgnnapp/neo4j/setup
   destination:
     server: https://kubernetes.default.svc
     namespace: tgnnapp
