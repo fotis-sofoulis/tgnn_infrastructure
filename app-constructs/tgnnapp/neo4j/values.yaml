@@ -3,7 +3,7 @@ neo4j:
   password: "not-secure-enough"
   resources:
     cpu: "500m"
-    memory: "1Gi"
+    memory: "2Gi"
 volumes:
   data:
     mode: "defaultStorageClass"
