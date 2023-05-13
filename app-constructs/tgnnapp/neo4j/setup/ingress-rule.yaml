@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: neo4j-ingress
+  namespace: tgnnapp
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`neo4j.tgnnapp.local`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: app-tgnnapp-neo4j
+      port: 7474

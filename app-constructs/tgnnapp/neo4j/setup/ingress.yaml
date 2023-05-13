@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: neo4j-ingress
+  namespace: tgnnapp
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/force-ssl-redirect: "false"
+    traefik.ingress.kubernetes.io/ssl-passthrough: "false"
+spec:
+  rules:
+  - host: neo4j.tgnnapp.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-tgnnapp-neo4j
+            port:
+              name: tcp-http
