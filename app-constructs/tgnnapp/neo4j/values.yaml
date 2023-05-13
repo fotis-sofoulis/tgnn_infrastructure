@@ -2,7 +2,7 @@ neo4j:
   name: "neo4j"
   password: "not-secure-enough"
   resources:
-    cpu: "250m"
+    cpu: "500m"
     memory: "1Gi"
 volumes:
   data:
