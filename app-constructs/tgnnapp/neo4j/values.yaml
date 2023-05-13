@@ -2,8 +2,8 @@ neo4j:
   name: "neo4j"
   password: "not-secure-enough"
   resources:
-    cpu: "500m"
-    memory: "2Gi"
+    cpu: "250m"
+    memory: "1Gi"
 volumes:
   data:
     mode: "defaultStorageClass"
