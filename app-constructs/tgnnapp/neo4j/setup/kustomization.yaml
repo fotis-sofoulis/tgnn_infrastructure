@@ -1,3 +1,4 @@
 resources:
   - ingress.yaml
   - ingress-rule.yaml
+  - service.yaml
