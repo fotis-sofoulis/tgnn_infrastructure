@@ -1,11 +1,11 @@
 master:
   configOptions:
     -Dspark.ui.reverseProxy=true
-    -Dspark.ui.reverseProxyUrl=https://spark.tgnnapp.local
+    -Dspark.ui.reverseProxyUrl=http://spark.tgnnapp.local
 worker:
   configOptions:
     -Dspark.ui.reverseProxy=true
-    -Dspark.ui.reverseProxyUrl=https://spark.tgnnapp.local
+    -Dspark.ui.reverseProxyUrl=http://spark.tgnnapp.local
   replicaCount: 2
 ingress:
   enabled: true
