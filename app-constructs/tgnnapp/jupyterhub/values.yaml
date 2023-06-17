@@ -11,3 +11,4 @@ singleuser:
     name: jupyter/pyspark-notebook
     tag: "spark-3.4.0"
   cmd: null
+  serviceAccountName: app-tgnnapp-spark
