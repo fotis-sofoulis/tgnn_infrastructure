@@ -12,3 +12,14 @@ singleuser:
     tag: "spark-3.4.0"
   cmd: null
   serviceAccountName: app-tgnnapp-spark
+  networkPolicy:
+    enabled: true
+    ingress: []
+    egress: []
+    egressAllowRules:
+      cloudMetadataServer: true 
+      dnsPortsPrivateIPs: true
+      nonPrivateIPs: true
+      privateIPs: true
+    interNamespaceAccessLabels: ignore
+    allowedIngressPorts: []
