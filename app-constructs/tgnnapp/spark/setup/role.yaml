@@ -4,7 +4,10 @@ metadata:
   name: spark-clusterrole
 rules:
 - apiGroups: [""]
-  resources: ["pods"]
+  resources: ["pods", "pods/exec"]
+  verbs: ["get", "watch", "list", "create", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments"]
   verbs: ["get", "watch", "list", "create", "delete"]
 - apiGroups: [""]
   resources: ["services"]

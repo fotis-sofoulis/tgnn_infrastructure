@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jupyterhub-ingress
+  namespace: tgnnapp
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`jupyterhub.tgnnapp.local`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: app-tgnnapp-jupyterhub
+      port: 7077
