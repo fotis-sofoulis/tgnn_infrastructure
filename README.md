@@ -146,6 +146,9 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --conf spark.executor.instances=2 \
     --conf spark.kubernetes.container.image=docker.io/bitnami/spark:3.4.0-debian-11-r2 \
     --conf spark.kubernetes.authenticate.driver.serviceAccountName=app-tgnnapp-spark \
+    --conf spark.kubernetes.driverEnv.SPARK_MASTER_URL=spark://app-tgnnapp-spark-master-svc:7077 \
     --conf spark.kubernetes.namespace=tgnnapp \
-    local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.1.2.jar
+    --conf spark.kubernetes.authenticate.submission.caCertFile=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+    --conf spark.kubernetes.authenticate.submission.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token \
+    local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.0.jar 
 ```
