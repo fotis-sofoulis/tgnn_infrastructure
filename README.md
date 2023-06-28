@@ -113,7 +113,7 @@ spark.tgnnapp.local
 At first create a new pod in tgnnapp namespace named `spark-client`. The image should be the same as the one used in the spark helm chart. After its creation we are connected into the pod in bash mode.
 
 ```bash
-kubectl run --namespace tgnnapp spark-client --rm --tty -i --restart='Never' --image docker.io/bitnami/spark:3.3.2-debian-11-r13 -- /bin/bash
+kubectl run --namespace tgnnapp spark-client --rm --tty -i --restart='Never' --image docker.io/bitnami/spark:3.4.0-debian-11-r2 -- /bin/bash
 ```
 
 To submit a spark job we need to know a few things:
@@ -126,4 +126,26 @@ spark-submit --master spark://app-tgnnapp-spark-master-svc:7077 \
     --deploy-mode client \
     --class org.apache.spark.examples.SparkPi \
     examples/src/main/python/pi.py 5
+```
+
+## Run a Spark Job in k8s cluster mode
+
+First we needd to create a new pod, and supply it the service account "app-tgnnapp-spark" which has the necessary permissions to create spark resources in the cluster.
+
+```bash
+kubectl run --namespace tgnnapp spark-client --rm --tty -i --restart='Never' --image docker.io/bitnami/spark:3.4.0-debian-11-r2 --overrides='{"apiVersion": "v1", "spec": {"serviceAccountName": "app-tgnnapp-spark"}}' -- /bin/bash
+```
+
+Then we can submit a spark job using the following command:
+
+```bash
+spark-submit --master k8s://https://kubernetes.default.svc:443 \
+    --deploy-mode cluster \
+    --name spark-pi \
+    --class org.apache.spark.examples.SparkPi \
+    --conf spark.executor.instances=2 \
+    --conf spark.kubernetes.container.image=docker.io/bitnami/spark:3.4.0-debian-11-r2 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=app-tgnnapp-spark \
+    --conf spark.kubernetes.namespace=tgnnapp \
+    local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.1.2.jar
 ```
