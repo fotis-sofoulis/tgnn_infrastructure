@@ -15,3 +15,6 @@ rules:
 - apiGroups: [""]
   resources: ["configmaps"]
   verbs: ["get", "watch", "list", "create", "update", "delete"]
+- apiGroups: [""]
+resources: ["persistentvolumeclaims"]
+verbs: ["get", "watch", "list"]
