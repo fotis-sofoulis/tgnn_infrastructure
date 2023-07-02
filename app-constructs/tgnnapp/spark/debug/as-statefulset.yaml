@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: k8s-spark-dbg-as-statefulset
+  labels:
+    app: k8s-spark-dbg-as-statefulset
+spec:
+  replicas: 1
+  serviceName: k8s-spark-dbg-as-statefulset
+  selector:
+    matchLabels:
+      app: k8s-spark-dbg-as-statefulset
+  template:
+    metadata:
+      labels
+        app: k8s-spark-dbg-as-statefulset
+    spec:
+      containers:
+      - name: k8s-spark-dbg-as-deployment
+        image: yorgaraz/k8s-spark-dbg:bitnami-3.4.0-debian-11-r2--rev1
+        ports:
+        - containerPort: 8080
+        - containerPort: 7077
+        - containerPort: 4040
+        - containerPort: 18080
