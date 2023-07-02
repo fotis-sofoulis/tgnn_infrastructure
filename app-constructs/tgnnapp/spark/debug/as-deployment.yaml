@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: k8s-spark-dbg-as-deployment
-        image: yorgaraz/k8s-spark-dbg:bitnami-3.4.0-debian-11-r2--rev1
+        image: "yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev1"
         ports:
         - containerPort: 8080
         - containerPort: 7077
