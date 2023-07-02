@@ -11,7 +11,7 @@ spec:
       app: k8s-spark-dbg-as-deployment
   template:
     metadata:
-      labels
+      labels:
         app: k8s-spark-dbg-as-deployment
     spec:
       containers:
