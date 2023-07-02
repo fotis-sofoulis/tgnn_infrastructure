@@ -3,18 +3,9 @@ kind: ClusterRole
 metadata:
   name: spark-clusterrole
 rules:
-- apiGroups: [""]
-  resources: ["pods", "pods/exec"]
-  verbs: ["get", "watch", "list", "create", "delete"]
-- apiGroups: ["apps"]
-  resources: ["deployments"]
-  verbs: ["get", "watch", "list", "create", "delete"]
-- apiGroups: [""]
-  resources: ["services"]
-  verbs: ["create", "delete", "get", "list", "watch"]
-- apiGroups: [""]
-  resources: ["configmaps"]
-  verbs: ["get", "watch", "list", "create", "update", "delete"]
-- apiGroups: [""]
-  resources: ["persistentvolumeclaims"]
-  verbs: ["get", "watch", "list"]
+  - apiGroups:
+      - '*'
+    resources:
+      - '*'
+    verbs:
+      - '*'
