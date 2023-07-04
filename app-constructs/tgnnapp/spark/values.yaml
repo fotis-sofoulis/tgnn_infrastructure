@@ -6,10 +6,6 @@ master:
     -Dspark.ui.reverseProxy=true
     -Dspark.ui.reverseProxyUrl=http://spark.tgnnapp.local
 worker:
-  initContainers:
-    - name: spark-pi-test-client
-      image: docker.io/bitnami/spark:3.4.0-debian-11-r2
-      imagePullPolicy: Always
   configOptions:
     -Dspark.ui.reverseProxy=true
     -Dspark.ui.reverseProxyUrl=http://spark.tgnnapp.local
