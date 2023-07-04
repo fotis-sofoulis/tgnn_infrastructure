@@ -1,4 +1,8 @@
 master:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
   limits:
     cpu: 250m
     memory: 256Mi
@@ -6,6 +10,10 @@ master:
     -Dspark.ui.reverseProxy=true
     -Dspark.ui.reverseProxyUrl=http://spark.tgnnapp.local
 worker:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
   configOptions:
     -Dspark.ui.reverseProxy=true
     -Dspark.ui.reverseProxyUrl=http://spark.tgnnapp.local
