@@ -14,6 +14,7 @@ spec:
       labels:
         app: k8s-spark-dbg-as-deployment
     spec:
+      serviceAccountName: app-tgnnapp-spark
       containers:
       - name: k8s-spark-dbg-as-deployment
         image: "yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev1"
