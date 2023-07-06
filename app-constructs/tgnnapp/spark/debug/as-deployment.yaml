@@ -17,7 +17,7 @@ spec:
       serviceAccountName: app-tgnnapp-spark
       containers:
       - name: k8s-spark-dbg-as-deployment
-        image: "yorgaraz/k8s-spark-dbg:3.4.1-debian-11-r0--rev1"
+        image: "yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev1"
         securityContext:
           runAsUser: 0
           runAsGroup: 0

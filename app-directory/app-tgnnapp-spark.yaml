@@ -8,7 +8,8 @@ spec:
   sources:
   - repoURL: "https://charts.bitnami.com/bitnami"
     chart: "spark"
-    targetRevision: 7.1.0
+    #targetRevision: 7.1.0
+    targetRevision: 7.0.1
     helm:
       valueFiles:
         - "$values/app-constructs/tgnnapp/spark/values.yaml"
