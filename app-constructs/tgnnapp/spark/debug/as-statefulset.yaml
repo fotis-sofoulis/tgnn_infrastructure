@@ -20,9 +20,8 @@ spec:
       - name: k8s-spark-dbg-as-deployment
         image: "yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev2"
         securityContext:
-          runAsUser: 0
-          runAsGroup: 0
-          runAsNonRoot: false 
+          runAsUser: 1001
+          runAsGroup: 1001
         env:
         - name: SPARK_MASTER_URL
           value: spark://app-tgnnapp-spark-master-svc:7077
