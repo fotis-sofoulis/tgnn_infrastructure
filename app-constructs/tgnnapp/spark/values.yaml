@@ -21,3 +21,8 @@ worker:
 ingress:
   enabled: true
   hostname: spark.tgnnapp.local
+
+image:
+  registry: docker.io
+  repository: yorgaraz/k8s-spark-dbg
+  tag: 3.4.0-debian-11-r2--rev2
