@@ -144,7 +144,7 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=2 \
-    --conf spark.kubernetes.container.image=docker.io/bitnami/spark:3.4.0-debian-11-r2 \
+    --conf spark.kubernetes.container.image=docker.io/yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev2 \
     --conf spark.kubernetes.authenticate.driver.serviceAccountName=app-tgnnapp-spark \
     --conf spark.kubernetes.driverEnv.SPARK_MASTER_URL=spark://app-tgnnapp-spark-master-svc:7077 \
     --conf spark.kubernetes.namespace=tgnnapp \
@@ -167,7 +167,7 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --conf spark.kubernetes.authenticate.executor.serviceAccountName=app-tgnnapp-spark \
     --conf spark.kubernetes.namespace=tgnnapp \
     --conf spark.executor.instances=2 \
-    --conf spark.kubernetes.container.image=docker.io/bitnami/spark:3.4.1-debian-11-r0 \
+    --conf spark.kubernetes.container.image=docker.io/yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev2 \
     --conf spark.kubernetes.container.image.pullPolicy=Always \
-local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.1.jar
+local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.0.jar
 ```
