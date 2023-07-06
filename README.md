@@ -169,5 +169,6 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --conf spark.executor.instances=2 \
     --conf spark.kubernetes.container.image=docker.io/yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev2 \
     --conf spark.kubernetes.container.image.pullPolicy=Always \
+    --conf spark.driver.host=$(hostname -I) \
 local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.0.jar
 ```
