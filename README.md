@@ -152,3 +152,22 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --conf spark.kubernetes.authenticate.submission.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token \
     local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.0.jar 
 ```
+
+## Run a Spark Job in k8s client mode
+
+```bash
+spark-submit --master k8s://https://kubernetes.default.svc:443 \
+    --deploy-mode client \
+    --name spark-pi-client \
+    --class org.apache.spark.examples.SparkPi \
+    --conf spark.kubernetes.driver.pod.name=k8s-spark-dbg-as-statefulset-0 \
+    --conf spark.kubernetes.authenticate.submission.caCertFile=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+    --conf spark.kubernetes.authenticate.submission.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=app-tgnnapp-spark \
+    --conf spark.kubernetes.authenticate.executor.serviceAccountName=app-tgnnapp-spark \
+    --conf spark.kubernetes.namespace=tgnnapp \
+    --conf spark.executor.instances=2 \
+    --conf spark.kubernetes.container.image=docker.io/bitnami/spark:3.4.1-debian-11-r0 \
+    --conf spark.kubernetes.container.image.pullPolicy=Always \
+local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.1.jar
+```
