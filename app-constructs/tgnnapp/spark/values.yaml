@@ -24,5 +24,5 @@ ingress:
 
 image:
   registry: docker.io
-  repository: yorgaraz/k8s-spark-dbg
-  tag: 3.4.0-debian-11-r2--rev2
+  repository: fotisofo/tgnn-spark
+  tag: 3.4.1-debian-11-r4--rev1
