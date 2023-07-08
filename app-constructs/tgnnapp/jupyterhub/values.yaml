@@ -15,15 +15,11 @@ singleuser:
   #uid: 1001
   #fsGid: 1001
   networkPolicy:
-    enabled: true
+    enabled: false 
     ingress:
-      - from:
-        - namespaceSelector: {}
-          podSelector: {}
+      - {} 
     egress:
-      - to:
-        - ipBlock:
-            cidr: 0.0.0.0/0
+      - {}
     egressAllowRules:
       cloudMetadataServer: true 
       dnsPortsPrivateIPs: true
