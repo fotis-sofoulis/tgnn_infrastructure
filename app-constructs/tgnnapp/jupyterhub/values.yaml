@@ -9,7 +9,7 @@ global:
 singleuser:
   image:
     name: fotisofo/tgnn-jupyterhub
-    tag: "3.4.1--rev4"
+    tag: "3.4.1--rev5"
   cmd: null
   serviceAccountName: app-tgnnapp-spark
   #uid: 1001
