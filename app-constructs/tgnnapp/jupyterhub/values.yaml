@@ -10,6 +10,7 @@ singleuser:
   image:
     name: fotisofo/tgnn-jupyterhub
     tag: "3.4.1--rev1"
+    pullPolicy: Always
   cmd: null
   serviceAccountName: app-tgnnapp-spark
   #uid: 1001
