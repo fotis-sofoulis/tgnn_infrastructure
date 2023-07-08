@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: open-singleuser-server
+spec:
+  podSelector:
+    matchLabels:
+      app: jupyterhub
+      component: singleuser-server
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - {} # This empty selector allows all ingress traffic
+  egress:
+  - {} # This empty selector allows all egress traffic
