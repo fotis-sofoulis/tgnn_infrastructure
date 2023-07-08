@@ -33,10 +33,10 @@ spec:
         volumeMounts:
         - mountPath: /home/jovyan
           name: tgnnapp-jupyter-single
-      volumes:
-      - name: tgnnapp-jupyter-single
-        persistentVolumeClaim:
-          claimName: tgnnapp-jupyter-single
+      # volumes:
+      # - name: tgnnapp-jupyter-single
+      #   persistentVolumeClaim:
+      #     claimName: tgnnapp-jupyter-single
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
