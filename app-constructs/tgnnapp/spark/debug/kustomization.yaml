@@ -1,3 +1,2 @@
 resources:
-  - as-deployment.yaml
   - as-statefulset.yaml

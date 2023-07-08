@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: k8s-spark-dbg-as-statefulset
+  name: k8s-spark-dbg
   labels:
-    app: k8s-spark-dbg-as-statefulset
+    app: k8s-spark-dbg
 spec:
   replicas: 1
-  serviceName: k8s-spark-dbg-as-statefulset
+  serviceName: k8s-spark-dbg
   selector:
     matchLabels:
-      app: k8s-spark-dbg-as-statefulset
+      app: k8s-spark-dbg
   template:
     metadata:
       labels:
-        app: k8s-spark-dbg-as-statefulset
+        app: k8s-spark-dbg
     spec:
       serviceAccountName: app-tgnnapp-spark
       containers:
-      - name: k8s-spark-dbg-as-deployment
-        image: "yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev2"
+      - name: k8s-spark-dbg
+        image: "fotisofo/tgnn-spark:3.4.1-debian-11-r4--rev1"
         securityContext:
           runAsUser: 1001
           runAsGroup: 1001
