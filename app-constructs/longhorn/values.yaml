@@ -1,5 +1,6 @@
 defaultSettings:
   defaultReplicaCount: 1
+  orphanAutoDeletion: true
 
 ingress:
   enabled: true
