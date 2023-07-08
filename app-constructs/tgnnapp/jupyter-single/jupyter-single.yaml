@@ -19,7 +19,7 @@ spec:
       serviceAccountName: app-tgnnapp-spark
       containers:
       - name: tgnnapp-jupyter-single
-        image: fotisofo/tgnn-jupyterhub:3.4.1--rev3
+        image: fotisofo/tgnn-jupyterhub:3.4.1--rev4
         imagePullPolicy: IfNotPresent
         securityContext:
           runAsUser: 1000
