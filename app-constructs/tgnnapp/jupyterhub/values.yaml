@@ -16,8 +16,13 @@ singleuser:
   #fsGid: 1001
   networkPolicy:
     enabled: true
-    ingress: []
-    egress: []
+    ingress:
+      - from:
+        - namespaceSelector: {}
+    egress:
+      - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
     egressAllowRules:
       cloudMetadataServer: true 
       dnsPortsPrivateIPs: true
