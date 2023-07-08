@@ -144,13 +144,13 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=2 \
-    --conf spark.kubernetes.container.image=docker.io/yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev2 \
+    --conf spark.kubernetes.container.image=docker.io/fotisofo/tgnn-spark:3.4.1-debian-11-r4--rev1 \
     --conf spark.kubernetes.authenticate.driver.serviceAccountName=app-tgnnapp-spark \
     --conf spark.kubernetes.driverEnv.SPARK_MASTER_URL=spark://app-tgnnapp-spark-master-svc:7077 \
     --conf spark.kubernetes.namespace=tgnnapp \
     --conf spark.kubernetes.authenticate.submission.caCertFile=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
     --conf spark.kubernetes.authenticate.submission.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token \
-    local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.0.jar 
+    local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.1.jar 
 ```
 
 ## Run a Spark Job in k8s client mode
@@ -160,7 +160,7 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --deploy-mode client \
     --name spark-pi-client \
     --class org.apache.spark.examples.SparkPi \
-    --conf spark.kubernetes.driver.pod.name=k8s-spark-dbg-as-statefulset-0 \
+    --conf spark.kubernetes.driver.pod.name=k8s-spark-dbg-0 \
     --conf spark.kubernetes.authenticate.submission.caCertFile=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
     --conf spark.kubernetes.authenticate.submission.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token \
     --conf spark.kubernetes.authenticate.driver.serviceAccountName=app-tgnnapp-spark \
@@ -170,5 +170,5 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --conf spark.kubernetes.container.image=docker.io/yorgaraz/k8s-spark-dbg:3.4.0-debian-11-r2--rev2 \
     --conf spark.kubernetes.container.image.pullPolicy=Always \
     --conf spark.driver.host=$(hostname -I) \
-local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.0.jar
+local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.1.jar
 ```
