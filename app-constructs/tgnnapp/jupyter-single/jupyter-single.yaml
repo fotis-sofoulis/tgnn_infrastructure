@@ -30,9 +30,9 @@ spec:
         - containerPort: 8888
           name: jupyter
           protocol: TCP
-        volumeMounts:
-        - mountPath: /home/jovyan
-          name: tgnnapp-jupyter-single
+      #  volumeMounts:
+      #  - mountPath: /home/jovyan
+      #    name: tgnnapp-jupyter-single
       # volumes:
       # - name: tgnnapp-jupyter-single
       #   persistentVolumeClaim:
