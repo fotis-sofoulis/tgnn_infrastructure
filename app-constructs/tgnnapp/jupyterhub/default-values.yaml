@@ -79,7 +79,7 @@ hub:
   extraVolumeMounts: []
   image:
     name: jupyterhub/k8s-hub
-    tag: "3.0.0-0.dev.git.6143.h246f1f0c"
+    tag: "3.0.0-beta.3"
     pullPolicy:
     pullSecrets: []
   resources: {}
@@ -249,7 +249,7 @@ proxy:
       # tag is automatically bumped to new patch versions by the
       # watch-dependencies.yaml workflow.
       #
-      tag: "v2.10.1" # ref: https://hub.docker.com/_/traefik?tab=tags
+      tag: "v2.10.3" # ref: https://hub.docker.com/_/traefik?tab=tags
       pullPolicy:
       pullSecrets: []
     hsts:
@@ -294,7 +294,7 @@ proxy:
       allowPrivilegeEscalation: false
     image:
       name: jupyterhub/k8s-secret-sync
-      tag: "3.0.0-0.dev.git.6114.hc0d0b3b0"
+      tag: "3.0.0-beta.3"
       pullPolicy:
       pullSecrets: []
     resources: {}
@@ -334,7 +334,7 @@ singleuser:
   networkTools:
     image:
       name: jupyterhub/k8s-network-tools
-      tag: "3.0.0-0.dev.git.6114.hc0d0b3b0"
+      tag: "3.0.0-beta.3"
       pullPolicy:
       pullSecrets: []
     resources: {}
@@ -384,7 +384,7 @@ singleuser:
       storageAccessModes: [ReadWriteOnce]
   image:
     name: jupyterhub/k8s-singleuser-sample
-    tag: "3.0.0-0.dev.git.6143.h246f1f0c"
+    tag: "3.0.0-beta.3"
     pullPolicy:
     pullSecrets: []
   startTimeout: 300
@@ -503,9 +503,10 @@ scheduling:
       # tag is automatically bumped to new patch versions by the
       # watch-dependencies.yaml workflow. The minor version is pinned in the
       # workflow, and should be updated there if a minor version bump is done
-      # here.
+      # here. We aim to stay around 1 minor version behind the latest k8s
+      # version.
       #
-      tag: "v1.25.9" # ref: https://github.com/kubernetes/website/blob/main/content/en/releases/patch-releases.md
+      tag: "v1.26.6" # ref: https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG
       pullPolicy:
       pullSecrets: []
     nodeSelector: {}
@@ -592,7 +593,7 @@ prePuller:
     # image and the configuration below relates to the hook-image-awaiter Job
     image:
       name: jupyterhub/k8s-image-awaiter
-      tag: "3.0.0-0.dev.git.6114.hc0d0b3b0"
+      tag: "3.0.0-beta.3"
       pullPolicy:
       pullSecrets: []
     containerSecurityContext:

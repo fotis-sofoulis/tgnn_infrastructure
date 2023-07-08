@@ -8,10 +8,12 @@ global:
 
 singleuser:
   image:
-    name: jupyter/pyspark-notebook
-    tag: "spark-3.4.0"
+    name: fotisofo/tgnn-jupyterhub
+    tag: "3.4.1--rev1"
   cmd: null
   serviceAccountName: app-tgnnapp-spark
+  #uid: 1001
+  #fsGid: 1001
   networkPolicy:
     enabled: true
     ingress: []
