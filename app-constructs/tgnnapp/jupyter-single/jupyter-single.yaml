@@ -24,7 +24,6 @@ spec:
         securityContext:
           runAsUser: 1000
           runAsGroup: 100
-          fsGroup: 100
           runAsNonRoot: true
         ports:
         - containerPort: 8888
