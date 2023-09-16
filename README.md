@@ -172,3 +172,45 @@ spark-submit --master k8s://https://kubernetes.default.svc:443 \
     --conf spark.driver.host=$(hostname -I) \
 local:///opt/bitnami/spark/examples/jars/spark-examples_2.12-3.4.1.jar
 ```
+
+## Installing different kernels for Jupyterhub
+
+To be able to run a spark job through our jupyterhub pods we have 2 requirements:
+
+1. First and foremost we must verify that the python version should match the Spark pod's. If not, then we can splice the jupyterhub image to include a kernel with the correct version.
+
+```bash
+# install Python 3.X where X input the desired version
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y python3.X python3.X-venv python3.X-dev && \
+    python3.9 -m ensurepip && \
+    python3.9 -m pip install --upgrade pip setuptools wheel
+
+# make sure the newly installed Python 3.X is used as the default python3
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.X 1 && \
+    update-alternatives --set python3 /usr/bin/python3.X
+
+# install ipykernel for Python 3.9
+RUN python3 -m pip install ipykernel && \
+    python3 -m ipykernel install --name python-3X
+```
+
+You may also install packages in this step, in order to include them with the image.
+
+```bash
+# install other packages
+RUN python39 -m pip install <package1_name> <package2_name> <package3_name>
+```
+
+In case that the kernel for the current pod user doesn't show up, we can run the following command on the jupyterhub pod's terminal:
+
+```bash
+/opt/venv/bin/python -m ipykernel install --user --name python-3X
+```
+
+After that there should be another kernel with our desired python version.
+
+2. Secondly, jupyterhub can only run in Spark client-mode because Spark Shell is used for interactive queries, thus the Spark Driver must be runing on your host.
