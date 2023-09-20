@@ -215,7 +215,7 @@ After that there should be another kernel with our desired python version.
 
 2. Secondly, jupyterhub can only run in Spark client-mode because Spark Shell is used for interactive queries, thus the Spark Driver must be runing on your host.
 
-## Loading graph data in Neo4j
+## Importing graph data in Neo4j
 
 In order to upload our graph dataset in our neo4j instance, we can do the following:
 
@@ -238,4 +238,25 @@ LOAD CSV WITH HEADERS FROM 'file:///CollegeMsg.csv' AS line
              MERGE (u:User {id: toInteger(line.user_u)})
              MERGE (v:User {id: toInteger(line.user_v)})
              MERGE (u)-[:CONNECTED_AT {timestamp: toInteger(line.timestamp)}]->(v);
+```
+
+To load the data into a Spark Dataframe:
+
+```python
+# Define the Neo4j server connection details
+uri = "bolt://app-tgnnapp-neo4j:7687"
+user = "<username>"
+password = "<password>"
+
+# Define the query
+query = "MATCH (u:User)-[r:CONNECTED_AT]->(v:User) RETURN u.id AS user_u, v.id AS user_v, r.timestamp AS timestamp"
+
+# Create driver and fetch the results
+driver = GraphDatabase.driver(uri, auth=(user, password))
+with driver.session() as session:
+    result = session.run(query)
+    data = [{'user_u': record['user_u'], 'user_v': record['user_v'], 'timestamp': record['timestamp']} for record in result]
+
+# Create dataframe from fetched data
+df = spark.createDataFrame(data)
 ```
