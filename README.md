@@ -214,3 +214,28 @@ In case that the kernel for the current pod user doesn't show up, we can run the
 After that there should be another kernel with our desired python version.
 
 2. Secondly, jupyterhub can only run in Spark client-mode because Spark Shell is used for interactive queries, thus the Spark Driver must be runing on your host.
+
+## Loading graph data in Neo4j
+
+In order to upload our graph dataset in our neo4j instance, we can do the following:
+
+1. Upload the file from our local system to neo4j pod's import folder
+
+```bash
+kubectl cp <path/to/file> <namespace>/<pod_name>:<path/to/file>
+```
+
+2. After we can connect to the pod with:
+
+```bash
+kubectl exec -it app-tgnnapp-neo4j-0 -n tgnnapp -- /bin/bash
+```
+
+3. In neo4j pods we can use cypher-shell to access the database using our credentials. After login in, we load the data with the following command(Example with CollegeMsg dataset):
+
+```cypher
+LOAD CSV WITH HEADERS FROM 'file:///CollegeMsg.csv' AS line
+             MERGE (u:User {id: toInteger(line.user_u)})
+             MERGE (v:User {id: toInteger(line.user_v)})
+             MERGE (u)-[:CONNECTED_AT {timestamp: toInteger(line.timestamp)}]->(v);
+```
